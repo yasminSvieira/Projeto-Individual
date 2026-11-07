@@ -1,12 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Anton&family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
-
-
 body {
-  margin: 0;
-  padding: 0;
-  font-family: "Nunito", sans-serif;
-  background-color: var(--cor-principal);
+    margin: 0;
+    padding-top: var(--tamanho-header);
+    font-family: "Nunito", sans-serif;
+    background-color: var(--cor-principal);
 }
 
 :root {
@@ -30,8 +28,14 @@ body {
 }
 
 .header {
-  height: var(--tamanho-header);
-  border-bottom: 2px solid var(--cor-complementar);
+    height: var(--tamanho-header);
+    border-bottom: 2px solid var(--cor-complementar);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    background-color: var(--cor-principal);
 }
 
 .header .container {
@@ -174,6 +178,7 @@ body {
   font-size: 18px;
   border: 2px solid var(--cor-secundaria);
   border-radius: 5px;
+  text-decoration: none;
   transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
@@ -182,6 +187,7 @@ body {
   background-color: var(--cor-principal); 
   color: var(--cor-secundaria);
   transform: scale(1.05); 
+  text-decoration: none;
   box-shadow: 0 0 18px var(--cor-secundaria);
 
 }
@@ -191,6 +197,7 @@ body {
 .estilos {
   background-color: var(--cor-principal);
   padding: 40px 90px;
+  scroll-margin-top: 90px;
 }
 
 .estilos-text {
@@ -262,6 +269,18 @@ body {
     margin: 0 12px 15px;
 }
 
+.box img{
+  width: 100%;
+  max-width: 400px;
+  filter: grayscale(100%);
+  transition: filter 0.5s ease;
+}
+
+.box img:hover{
+ 
+  filter: grayscale(0%);
+}
+
 .box:hover {
     border-color: var(--cor-secundaria);
     transform: translateY(-4px);
@@ -275,6 +294,7 @@ body {
   color: #fff;
   display: flex;
   font-size: 15px;
+  border: 2px solid var(--cor-complementar);
 }
 
 .footer .container {
