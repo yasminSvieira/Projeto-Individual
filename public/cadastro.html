@@ -24,10 +24,10 @@
       <h1 class="titulo">Cypher Flow</h1>
       <ul class="navbar">
         <li class="agora">
-          <a href="#">Inicial</a>
+          <a href="index.html">Inicial</a>
         </li>
         <li>
-          <a href="#">Estilos</a>
+          <a href="#estilos">Estilos</a>
         </li>
         <li>
           <a href="#">Sobre mim</a>
@@ -78,7 +78,7 @@
           <button class="botao" onclick="cadastrar()">Cadastrar</button>
         </div>
         <div id="div_aguardar" class="loading-div">
-          <img src="./assets/circle-loading.gif" id="loading-gif" />
+          <img src="./assets/loading-gif.gif" id="loading-gif" />
         </div>
 
         <div id="div_erros_login"></div>
@@ -86,21 +86,11 @@
     </div>
   </div>
 
-  <!--footer inicio-->
-  <div class="footer">
-    <div class="container">
-      <h4>Feito por yas souza &hearts; :) </h4>
-    </div>
-  </div>
-  <!--footer fim-->
 </body>
 
 </html>
 
 <script>
-
-  // Array para armazenar empresas cadastradas para validação de código de ativação 
-  let listaEmpresasCadastradas = [];
 
   function cadastrar() {
     // aguardar();
@@ -122,16 +112,48 @@
     ) {
       cardErro.style.display = "block";
       mensagem_erro.innerHTML =
-        "(Mensagem de erro para todos os campos em branco)";
+        "Não foi possível continuar. Existem campos não preenchidos.";
 
       finalizarAguardar();
       return false;
     } else {
-      setInterval(sumirMensagem, 5000);
+      setTimeout(sumirMensagem, 5000);
     }
 
-   
-    // Enviando o valor da nova input
+    // Verificando se as senha coincidem 
+
+    if (senhaVar != confirmacaoSenhaVar) {
+      cardErro.style.display = "block";
+      mensagem_erro.innerHTML = "As senhas não coincidem!";
+      
+      return false;
+    } else {
+      setTimeout(sumirMensagem, 5000);
+    }
+    
+    // Verificando se a senha possui carácteres especiais 
+
+    let caracteresEspeciais = ['!', '@', '#', '$', '%', '&', '*', '_', '-'];
+    let temCaractereEspecial = false;
+
+    for (let i = 0; i < caracteresEspeciais.length; i++) {
+      let simboloAtual = caracteresEspeciais[i];
+
+      if (senhaVar.includes(simboloAtual)) {
+        temCaractereEspecial = true;
+      }
+    }
+
+    if (temCaractereEspecial == false) {
+      cardErro.style.display = "block";
+      mensagem_erro.innerHTML = "A senha precisa possuir pelo menos um caractere especial!";
+    
+      return false;
+      setTimeout(sumirMensagem, 5000);
+    
+    } 
+
+    // Enviando o valor da nova input para a API
     fetch("/usuarios/cadastrar", {
       method: "POST",
       headers: {
