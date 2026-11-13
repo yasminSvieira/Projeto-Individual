@@ -407,13 +407,18 @@ body {
 }
 
 .loading-div {
-  width: 50px;
-  display: none;
+    width: 100%;
+    margin: auto;
+    display: none;
+    justify-content: center;
+    align-items: center;
 }
 
 .loading-div img {
-  height: 50px;
-  width: 50px;
+    padding-top: 8px;
+    width: 25px;
+    height: 25px;
+    object-fit: contain;
 }
 
 #div_erros_login {
@@ -474,17 +479,6 @@ input {
   width: 120px;
   align-self: center;
   margin-top: 5px;
-}
-
-.loading-div {
-  width: 50px;
-  margin: auto;
-  display: none;
-}
-
-.loading-div img {
-  height: 50px;
-  width: 50px;
 }
 
 /* SIMULADOR */
