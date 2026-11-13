@@ -23,10 +23,10 @@
       <h1 class="titulo">Cypher Flow</h1>
       <ul class="navbar">
         <li class="agora">
-          <a href="#">Inicial</a>
+          <a href="inicial.html">Inicial</a>
         </li>
         <li>
-          <a href="#">Estilos</a>
+          <a href="#estilos">Estilos</a>
         </li>
         <li>
           <a href="#">Sobre mim</a>
@@ -74,30 +74,25 @@
         </div>
     </div>
 
-    <!--footer inicio-->
-    <div class="footer">
-        <div class="container">
-            <h4>Feito por yas souza &hearts; :)</h4>
-        </div>
-    </div>
-    <!--footer fim-->
 
 </body>
 
 </html>
 
-<script>
-
-
+<script>    
     function entrar() {
         aguardar();
 
         var emailVar = email_input.value;
         var senhaVar = senha_input.value;
 
+      // if(tentativas > 0){
+        //    for(let i = 0; i > tentativas)
+        //}
+        
         if (emailVar == "" || senhaVar == "") {
             cardErro.style.display = "block"
-            mensagem_erro.innerHTML = "(Mensagem de erro para todos os campos em branco)";
+            mensagem_erro.innerHTML = "Não foi possível continuar. Existem campos não preenchidos.";
             finalizarAguardar();
             return false;
         }
@@ -129,7 +124,7 @@
                     sessionStorage.EMAIL_USUARIO = json.email;
                     sessionStorage.NOME_USUARIO = json.nome;
                     sessionStorage.ID_USUARIO = json.id;
-                    sessionStorage.AQUARIOS = JSON.stringify(json.aquarios)
+                   
 
                     setTimeout(function () {
                         window.location = "./dashboard/cards.html";
