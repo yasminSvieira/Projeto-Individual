@@ -17,6 +17,17 @@ email VARCHAR(100) NOT NULL UNIQUE,
 senha VARCHAR(45) NOT NULL
 );
 
+CREATE TABLE tentativa(
+id INT PRIMARY KEY AUTO_INCREMENT,
+acertos INT NOT NULL,
+erros INT NOT NULL,
+dataHora DATETIME DEFAULT CURRENT_TIMESTAMP(),
+fk_usuario INT,
+CONSTRAINT fk_usuario_tentativa
+FOREIGN KEY (fk_usuario)
+REFERENCES usuario(id)
+);
+
 
 
 
