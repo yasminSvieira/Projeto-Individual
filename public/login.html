@@ -66,7 +66,7 @@
                 </div>
 
                 <div id="div_aguardar" class="loading-div">
-                    <img src="./assets/circle-loading.gif" id="loading-gif">
+                    <img src="./assets/loading-gif.gif" id="loading-gif">
                 </div>
 
                 <div id="div_erros_login"></div>
@@ -85,10 +85,6 @@
 
         var emailVar = email_input.value;
         var senhaVar = senha_input.value;
-
-      // if(tentativas > 0){
-        //    for(let i = 0; i > tentativas)
-        //}
         
         if (emailVar == "" || senhaVar == "") {
             cardErro.style.display = "block"
@@ -127,7 +123,7 @@
                    
 
                     setTimeout(function () {
-                        window.location = "./dashboard/cards.html";
+                        window.location = "./dashboard/dashboard.html"; // MUDAR PRA QUIZ
                     }, 1000); // apenas para exibir o loading
 
                 });
