@@ -8,10 +8,10 @@ body {
   font-family: "Nunito", sans-serif;
 }
 
-:root{
+:root {
   --cor-principal: #0c0c0c;
   --cor-secundaria: #00E5EF;
-  --cor-complementar:#3A3A38;
+  --cor-complementar: #3A3A38;
   --cor-detalhes: #1c1c1c;
   --cor-fonte: #fff;
 }
@@ -356,7 +356,7 @@ canvas {
   justify-content: space-evenly;
   align-items: center;
   border-right: 3px solid var(--cor-secundaria);
-  background-color: var(--cor-principal);
+  background-color: var(--cor-detalhes);
 }
 
 .dash-right {
@@ -372,7 +372,8 @@ canvas {
 }
 
 .header-left h1 {
-  color: #32b9cd;
+  color: var(--cor-fonte);
+  font-family: "anton", sans-serif;
 }
 
 .hello {
@@ -382,7 +383,7 @@ canvas {
 }
 
 .hello h3 {
-  color: #e3b062;
+  color: var(--cor-secundaria);
   font-weight: 300;
   font-size: 1.2rem;
 }
@@ -394,25 +395,35 @@ canvas {
 .btn-nav {
   width: 40%;
   color: white;
-  background-color: #e6005a;
+  background-color: var(--cor-principal);
   border-radius: 5px;
   text-align: center;
   padding: 2% 5%;
 }
 
-.btn-nav-white {
+.btn-nav-gray {
   width: 40%;
-  background-color: white;
-  border: 3px solid #e6005a;
+  background-color: var(--cor-principal);
+  border: 2px solid var(--cor-secundaria);
   border-radius: 5px;
   text-align: center;
   padding: 2% 5%;
 }
 
-.btn-nav-white h3 {
-  color: #e6005a;
+.btn-nav-gray h3 {
+  color: var(--cor-fonte);
   padding: 0;
   margin: 0;
+}
+
+.btn-nav-gray h3:hover {
+  color: var(--cor-secundaria)
+}
+
+.btn-nav-gray:hover {
+  transform: scale(1.05);
+  text-decoration: none;
+  box-shadow: 0 0 18px var(--cor-secundaria)
 }
 
 .btn-nav h3,
@@ -421,15 +432,48 @@ canvas {
   padding: 0;
 }
 
+.btn-nav {
+  width: 40%;
+  background-color: var(--cor-principal);
+  border: 2px solid var(--cor-secundaria);
+  border-radius: 5px;
+  text-align: center;
+  padding: 2% 5%;
+
+}
+
+.btn-nav:hover {
+  transform: scale(1.05);
+  text-decoration: none;
+  box-shadow: 0 0 18px var(--cor-secundaria)
+}
+
+.btn-nav h3:hover {
+  color: var(--cor-secundaria);
+
+}
+
 .btn-logout {
   margin: 0;
   padding: 0;
   width: 20%;
-  background-color: #32b9cd;
+  background-color: var(--cor-secundaria);
   color: white;
-  border-radius: 10px;
   text-align: center;
   padding: 10px 15px;
   margin-bottom: 100px;
   cursor: pointer;
+  font-size: 18px;
+  border: 2px solid var(--cor-secundaria);
+  border-radius: 5px;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.btn-logout:hover {
+  font-weight: bold;
+  background-color: var(--cor-principal);
+  color: var(--cor-secundaria);
+  transform: scale(1.05);
+  text-decoration: none;
+  box-shadow: 0 0 18px var(--cor-secundaria)
 }
