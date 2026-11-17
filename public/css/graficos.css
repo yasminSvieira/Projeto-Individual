@@ -89,22 +89,13 @@ body {
   font-weight: 800;
 }
 
-.btn-nav {
-  width: 40%;
-  color: white;
-  background-color: var(--cor-principal);
-  border-radius: 5px;
-  text-align: center;
-  padding: 2% 5%;
-}
-
 .btn-nav-gray {
   width: 40%;
   background-color: var(--cor-principal);
   border: 2px solid var(--cor-secundaria);
   border-radius: 5px;
   text-align: center;
-  padding: 2% 5%;
+  padding: 2% 6%;
 }
 
 .btn-nav-gray h3 {
@@ -127,16 +118,6 @@ body {
 .btn-logout h3 {
   margin: 0;
   padding: 0;
-}
-
-.btn-nav {
-  width: 40%;
-  background-color: var(--cor-principal);
-  border: 2px solid var(--cor-secundaria);
-  border-radius: 5px;
-  text-align: center;
-  padding: 2% 5%;
-
 }
 
 .btn-nav:hover {

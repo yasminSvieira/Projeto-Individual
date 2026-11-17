@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CYPHER FLOW | Dashboard</title>
 
-    
+
     <link rel="stylesheet" href="./../css/estilo.css">
     <link rel="stylesheet" href="./../css/graficos.css">
     <link rel="stylesheet" href="./../css/quiz.css">
@@ -17,11 +17,13 @@
 
     <link rel="preconnect" href="https://fonts.gstatic.com">
 
-    <link href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
 
-        <!-- FONT AWESOME -->
+    <!-- FONT AWESOME -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
+
     <!-- scripts do Chart.js - 2022-1 -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
@@ -42,7 +44,7 @@
                 </a>
             </div>
 
-            <div class="btn-nav">
+            <div class="btn-nav-gray">
                 <a href="./dashboard.html">
                     <h3>Gráficos</h3>
                 </a>
@@ -59,113 +61,174 @@
             </div>
         </div>
 
-    <div class="quiz">
-        <div class="msgInicialQuiz">
-           <h3 class="msgInicial-title" id="msgInicial-title">
-            NOVE ESTILOS. <span>UM DESAFIO.</span>
-           </h3> 
-           <div class="msgInicial-subtitle" id="msgInicial-subtitle">
-                <p>
-                    Descubra o seu nível de conhecimento sobre as danças urbanas!
-                </p>
-           </div>
-        </div>
-        <div id="pontuacaoEJogo">
+        <div class="quiz">
+            <div class="msgInicialQuiz">
+                <h3 class="msgInicial-title" id="msgInicial-title">
+                    NOVE ESTILOS. <span>UM DESAFIO.</span>
+                </h3>
+                <div class="msgInicial-subtitle" id="msgInicial-subtitle">
+                    <p>
+                        Descubra o seu nível de conhecimento sobre as danças urbanas!
+                    </p>
+                </div>
+            </div>
+            <div id="pontuacaoEJogo">
 
-            <button class="btnIniciarQuiz" id="btnIniciarQuiz" onclick="iniciarQuiz()">INICIAR QUIZ</button>
+                <button class="btnIniciarQuiz" id="btnIniciarQuiz" onclick="iniciarQuiz()">INICIAR QUIZ</button>
                 <div id="gifIntro" class="gif-intro">
                     <img src="../assets/gifs/equalizador.gif" alt="equalizador">
                 </div>
-            <div id="pontuacao" class="flex-colunar width-fit-content border-primary">
-                <div id="pontuacaoDuranteJogo" class="flex-colunar padding-8">
-                    <span class="width-fit-content">Quantidade de acertos: <span id="spanCertas"></span></span>
-                    <span class="width-fit-content">Quantidade de erros: <span id="spanErradas"></span></span>
+                <div id="pontuacao" class="flex-colunar width-fit-content border-primary">
+                    <div id="pontuacaoDuranteJogo" class="flex-colunar padding-8">
+                        <span class="width-fit-content">Quantidade de acertos: <span id="spanCertas"></span></span>
+                        <span class="width-fit-content">Quantidade de erros: <span id="spanErradas"></span></span>
+                    </div>
+                    <div id="pontuacaoFinalJogo" class="flex-colunar padding-8">
+                        <span id="pontuacaoFinal" class="width-fit-content">Pontuação Final:
+                            <span id="spanPontuacaoFinal">***</span>
+                        </span>
+                        <span id="msgFinal" class="width-fit-content">***</span>
+                    </div>
                 </div>
-                <div id="pontuacaoFinalJogo" class="flex-colunar padding-8">
-                    <span id="pontuacaoFinal" class="width-fit-content">Pontuação Final:
-                        <span id="spanPontuacaoFinal">***</span>
-                    </span>
-                    <span id="msgFinal" class="width-fit-content">***</span>
+
+                <div id="jogo" class="width-fit-content flex-colunar border-secondary">
+
+                    <div id="infoQuestao" class="padding-8">
+                        <span>Questão atual: <span id="spanNumeroDaQuestaoAtual"></span> de <span
+                                id="qtdQuestoes"></span>
+                            questões.</span>
+                    </div>
+
+                    <div id="perguntaDaQuestaoAtual" class="padding-8">
+                        <span id="spanQuestaoExibida" class="text-bold"></span>
+                    </div>
+
+                    <div id="infoAlternativas" class="padding-8">
+                        <span><em>Escolha uma opção dentre as abaixo:</em></span>
+                    </div>
+
+                    <div id="opcoes" class="flex-colunar padding-8">
+                        <span>
+                            <input type="radio" id="primeiraOpcao" name="option" class="radio" value="alternativaA" />
+                            <label for="primeiraOpcao" class="option" id="labelOpcaoUm"></label>
+                        </span>
+                        <span>
+                            <input type="radio" id="segundaOpcao" name="option" class="radio" value="alternativaB" />
+                            <label for="segundaOpcao" class="option" id="labelOpcaoDois"></label>
+                        </span>
+                        <span>
+                            <input type="radio" id="terceiraOpcao" name="option" class="radio" value="alternativaC" />
+                            <label for="terceiraOpcao" class="option" id="labelOpcaoTres"></label>
+                        </span>
+                        <span>
+                            <input type="radio" id="quartaOpcao" name="option" class="radio" value="alternativaD" />
+                            <label for="quartaOpcao" class="option" id="labelOpcaoQuatro"></label>
+                        </span>
+                    </div>
+
+                    <div id="botoes" class="flex-colunar padding-8">
+                        <button onclick="submeter()" id="btnSubmeter">Submeter resposta</button>
+                        <button onclick="avancar()" id="btnProx" disabled>Avançar para próxima questão</button>
+                        <!-- <button onclick="finalizar()" id="btnConcluir" disabled>Finalizar Quiz</button> -->
+                        <button onclick="tentarNovamente()" id="btnTentarNovamente" disabled>Tentar novamente</button>
+                    </div>
+
                 </div>
             </div>
-
-            <div id="jogo" class="width-fit-content flex-colunar border-secondary">
-
-                <div id="infoQuestao" class="padding-8">
-                    <span>Questão atual: <span id="spanNumeroDaQuestaoAtual"></span> de <span id="qtdQuestoes"></span>
-                        questões.</span>
-                </div>
-
-                <div id="perguntaDaQuestaoAtual" class="padding-8">
-                    <span id="spanQuestaoExibida" class="text-bold"></span>
-                </div>
-
-                <div id="infoAlternativas" class="padding-8">
-                    <span><em>Escolha uma opção dentre as abaixo:</em></span>
-                </div>
-
-                <div id="opcoes" class="flex-colunar padding-8">
-                    <span>
-                        <input type="radio" id="primeiraOpcao" name="option" class="radio" value="alternativaA" />
-                        <label for="primeiraOpcao" class="option" id="labelOpcaoUm"></label>
-                    </span>
-                    <span>
-                        <input type="radio" id="segundaOpcao" name="option" class="radio" value="alternativaB" />
-                        <label for="segundaOpcao" class="option" id="labelOpcaoDois"></label>
-                    </span>
-                    <span>
-                        <input type="radio" id="terceiraOpcao" name="option" class="radio" value="alternativaC" />
-                        <label for="terceiraOpcao" class="option" id="labelOpcaoTres"></label>
-                    </span>
-                    <span>
-                        <input type="radio" id="quartaOpcao" name="option" class="radio" value="alternativaD" />
-                        <label for="quartaOpcao" class="option" id="labelOpcaoQuatro"></label>
-                    </span>
-                </div>
-
-                <div id="botoes" class="flex-colunar padding-8">
-                    <button onclick="submeter()" id="btnSubmeter">Submeter resposta</button>
-                    <button onclick="avancar()" id="btnProx" disabled>Avançar para próxima questão</button>
-                    <!-- <button onclick="finalizar()" id="btnConcluir" disabled>Finalizar Quiz</button> -->
-                    <button onclick="tentarNovamente()" id="btnTentarNovamente" disabled>Tentar novamente</button>
-                </div>
-
-            </div>
-        </div>
-    </div>
 </body>
 
 </html>
 <script>
-    b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
-    
     const listaDeQuestoes = [
 
         {
-            pergunta: "Qual mês tem 30 dias?",
-            alternativaA: "Janeiro",
-            alternativaB: "Dezembro",
-            alternativaC: "Junho",
-            alternativaD: "Agosto",
+            pergunta: "Em qual período o Breaking começou a se desenvolver?",
+            alternativaA: "Final dos anos 1960.",
+            alternativaB: "Início dos anos 1970.",
+            alternativaC: "Início dos anos 1980.",
+            alternativaD: "Final dos anos 1990.",
+            alternativaCorreta: "alternativaB"
+        },
+
+        {
+            pergunta: "Em quais eventos da comunidade LGBTQIA+ o Voguing começou a se desenvolver?",
+            alternativaA: "Em apresentações de dança em clubes de música Disco.",
+            alternativaB: "Em desfiles profissionais de moda.",
+            alternativaC: "Em eventos competitivos conhecidos como Ballrooms.",
+            alternativaD: "Em competições de dança de rua.",
             alternativaCorreta: "alternativaC"
         },
 
         {
-            pergunta: "Quantas horas tem em um dia?",
-            alternativaA: "30 horas",
-            alternativaB: "38 horas",
-            alternativaC: "48 horas",
-            alternativaD: "24 horas",
+            pergunta: "Quais são os quatro pilares do Hip-hop?",
+            alternativaA: "DJ, Rap, Krump e Waacking.",
+            alternativaB: "Breaking, Graffiti, Rap e Litefeet.",
+            alternativaC: "Popping, Locking, House e Breaking.",
+            alternativaD: "DJ, MC, Breaking e Graffiti.",
             alternativaCorreta: "alternativaD"
         },
 
         {
-            pergunta: "Qual destes números é ímpar?",
-            alternativaA: "Dez",
-            alternativaB: "Doze",
-            alternativaC: "Oito",
-            alternativaD: "Onze",
+            pergunta: "Quais DJs foram fundamentais para o desenvolvimento e a popularização da cultura Hip-hop?",
+            alternativaA: "Don Campbell, Boogaloo Sam e Poppin' Pete",
+            alternativaB: "Kool Herc, Afrika Bambaataa e Grandmaster Flash.",
+            alternativaC: "Frankie Knuckles, Viktor Manoel e Willi Ninja.",
+            alternativaD: "Chrybaby Cozie e Tight Eyez",
+            alternativaCorreta: "alternativaB"
+        },
+
+        {
+            pergunta: "Qual gênero musical teve grande influência no desenvolvimento do Waacking?",
+            alternativaA: "Disco.",
+            alternativaB: "Funk.",
+            alternativaC: "Jazz.",
+            alternativaD: "Reggae.",
+            alternativaCorreta: "alternativaA"
+        },
+
+        {
+            pergunta: "Quais são as principais características do House Dance?",
+            alternativaA: "Top Rock, Freezes e Power Moves.",
+            alternativaB: "Waving, Robot e Gliding.",
+            alternativaC: "Jacking, Footwork e Lofting.",
+            alternativaD: "Poses, Runway e Old Way.",
+            alternativaCorreta: "alternativaC"
+        },
+
+        {
+            pergunta: "Qual estilo de dança possui movimentos que lembram um robô?",
+            alternativaA: "Popping.",
+            alternativaB: "Locking.",
+            alternativaC: "Breaking.",
+            alternativaD: "Krump.",
+            alternativaCorreta: "alternativaA"
+        },
+
+        {
+            pergunta: "Qual estilo de dança surgiu associado à música Funk e é caracterizado por pausas repentinas nos movimentos?",
+            alternativaA: "House.",
+            alternativaB: "Waacking.",
+            alternativaC: "Locking.",
+            alternativaD: "Voguing.",
+            alternativaCorreta: "alternativaC"
+        },
+
+        {
+            pergunta: "Qual estilo ganhou visibilidade por meio de apresentações nas estações e nos vagões de metrô de Nova York?",
+            alternativaA: "Popping.",
+            alternativaB: "Krump.",
+            alternativaC: "House.",
+            alternativaD: "Litefeet.",
             alternativaCorreta: "alternativaD"
+        },
+
+        {
+            pergunta: "Qual estilo é caracterizado por movimentações fortes, rápidas e explosivas?",
+            alternativaA: "Waacking.",
+            alternativaB: "Krump.",
+            alternativaC: "Voguing.",
+            alternativaD: "Locking.",
+            alternativaCorreta: "alternativaB"
         }
 
     ]
@@ -188,9 +251,8 @@
         document.getElementById('pontuacao').style.display = "flex"
         document.getElementById('jogo').style.display = "flex"
         document.getElementById('btnIniciarQuiz').style.display = "none"
-        document.getElementById("msgInicial-title").style.display = "none";
-        document.getElementById("msgInicial-subtitle").style.display = "none";
-        document.getElementById("gifIntro").style.display = "none";
+        document.getElementById('gifIntro').style.display = "none"
+
         document.getElementById('qtdQuestoes').innerHTML = quantidadeDeQuestoes
 
         preencherHTMLcomQuestaoAtual(0)
