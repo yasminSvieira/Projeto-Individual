@@ -14,7 +14,9 @@
   <link rel="icon" href="./assets/icon/favicon2.ico" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Anton&family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap"
+    rel="stylesheet">
 </head>
 
 <body onload="listar()">
@@ -120,19 +122,33 @@
       setTimeout(sumirMensagem, 5000);
     }
 
-    // Verificando se as senha coincidem 
+    //Verificando se o email possui valor válido
+    if (!emailVar.includes("@") || !emailVar.includes(".com")) {
+      cardErro.style.display = "block";
+      mensagem_erro.innerHTML = "Digite um e-mail válido!";
+      setTimeout(sumirMensagem, 5000);
+      return false;
+    }
 
+    // Verificando se a senha possui o mínimo de caracteres 
+    if (senhaVar.length < 8) {
+      cardErro.style.display = "block";
+      mensagem_erro.innerHTML = "A senha precisa ter no mínimo 8 caracteres!";
+      setTimeout(sumirMensagem, 5000);
+      return false;
+    }
+
+    // Verificando se as senha coincidem 
     if (senhaVar != confirmacaoSenhaVar) {
       cardErro.style.display = "block";
       mensagem_erro.innerHTML = "As senhas não coincidem!";
-      
+
       return false;
     } else {
       setTimeout(sumirMensagem, 5000);
     }
-    
-    // Verificando se a senha possui carácteres especiais 
 
+    // Verificando se a senha possui carácteres especiais 
     let caracteresEspeciais = ['!', '@', '#', '$', '%', '&', '*', '_', '-'];
     let temCaractereEspecial = false;
 
@@ -147,13 +163,12 @@
     if (temCaractereEspecial == false) {
       cardErro.style.display = "block";
       mensagem_erro.innerHTML = "A senha precisa possuir pelo menos um caractere especial!";
-    
+
       return false;
       setTimeout(sumirMensagem, 5000);
-    
-    } 
 
-  
+    }
+
 
     // Enviando o valor da nova input para a API
     fetch("/usuarios/cadastrar", {
