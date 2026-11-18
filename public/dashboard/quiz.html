@@ -140,7 +140,7 @@
 </html>
 <script>
     b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
-    
+
     const listaDeQuestoes = [
 
         {
@@ -241,6 +241,8 @@
     let tentativaIncorreta = 0
     let certas = 0
     let erradas = 0
+    let id_usuario = sessionStorage.ID_USUARIO
+    let fk_usuario = id_usuario
     let quantidadeDeQuestoes = listaDeQuestoes.length
     // let isUltima = numeroDaQuestaoAtual == quantidadeDeQuestoes-1 ? true : false
 
@@ -387,6 +389,8 @@
     }
 
     function finalizarJogo() {
+        //Criar rota pra cadastrar no banco
+        //duplicar arquivos de usuario - rota cadastrar
         let textoParaMensagemFinal = null
         let classComCoresParaMensagemFinal = null
         const porcentagemFinalDeAcertos = pontuacaoFinal / quantidadeDeQuestoes
@@ -395,11 +399,11 @@
             textoParaMensagemFinal = "Parece que você não estudou..."
             classComCoresParaMensagemFinal = "text-danger-with-bg"
         }
-        else if (porcentagemFinalDeAcertos > 0.3 && porcentagemFinalDeAcertos < 0.9) {
+        else if (porcentagemFinalDeAcertos > 0.3 && porcentagemFinalDeAcertos < 0.8) {
             textoParaMensagemFinal = "Pode melhorar na próxima, hein!"
             classComCoresParaMensagemFinal = "text-warning-with-bg"
         }
-        else if (porcentagemFinalDeAcertos >= 0.9) {
+        else if (porcentagemFinalDeAcertos >= 0.8) {
             textoParaMensagemFinal = "Uau, parabéns!"
             classComCoresParaMensagemFinal = "text-success-with-bg"
         }
@@ -418,5 +422,20 @@
         // btnConcluir.disabled = true
         btnTentarNovamente.disabled = false
 
+          // Enviando o valor da nova input para a API
+    fetch("/resultQuiz/cadastrar", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        // crie um atributo que recebe o valor recuperado aqui
+        // Agora vá para o arquivo routes/usuario.js
+        acertos: certas,
+        erros: erradas,
+        fk_usuario: sessionStorage.ID_USUARIO
+      }),
+    })
+  
     }
 </script>
