@@ -20,7 +20,7 @@ var usuarioRouter = require("./src/routes/usuarios");
 
 // Rotas criadas
 var resultQuizRouter = require("./src/routes/resultQuiz");
-
+var dashboardRouter = require("./src/routes/dashboard")
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -30,7 +30,12 @@ app.use(cors());
 
 app.use("/", indexRouter);
 app.use("/usuarios", usuarioRouter);
+
+// Rotas criadas
 app.use("/resultQuiz", resultQuizRouter);
+app.use("/dashboard", dashboardRouter);
+
+
 
 app.listen(PORTA_APP, function () {
     console.log(`

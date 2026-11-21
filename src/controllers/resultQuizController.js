@@ -5,8 +5,9 @@ function cadastrar(req, res) {
     var acertos = req.body.acertos;
     var erros = req.body.erros;
     var fk_usuario = req.body.fk_usuario;
-    // Faça as valuações dos valores
-    if (fk_usuario== undefined) {
+    
+    // Faça as validações dos valores
+    if (fk_usuario == undefined) {
        return res.status(400).send("Seu user está indefinido!");
     } else if(acertos == undefined) {
        return res.status(400).send("O total de acertos está indefinido!");
