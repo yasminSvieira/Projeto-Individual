@@ -1,0 +1,9 @@
+# Histórico do R
+.Rhistory
+
+# Dependências do Node.js (regeneradas pelo npm install)
+node_modules/
+
+# Variáveis de ambiente (credenciais do banco e do servidor)
+.env
+.env.dev
