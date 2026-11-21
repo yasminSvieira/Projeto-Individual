@@ -2,11 +2,11 @@
 <html lang="pt-br">
 
 <head>
-    <link rel="shortcut icon" href="../assets/icon/favicon2.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="../assets/icon/logo.svg" type="image/svg+xml">
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CYPHER FLOW | Dashboard</title>
+    <title>CYPHER FLOW | Quiz</title>
 
 
     <link rel="stylesheet" href="./../css/estilo.css">
@@ -135,6 +135,8 @@
 
                 </div>
             </div>
+        </div>
+    </div>
 </body>
 
 </html>
@@ -422,20 +424,29 @@
         // btnConcluir.disabled = true
         btnTentarNovamente.disabled = false
 
-          // Enviando o valor da nova input para a API
-    fetch("/resultQuiz/cadastrar", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        // crie um atributo que recebe o valor recuperado aqui
-        // Agora vá para o arquivo routes/usuario.js
-        acertos: certas,
-        erros: erradas,
-        fk_usuario: sessionStorage.ID_USUARIO
-      }),
-    })
-  
+        // Enviando o resultado da tentativa para a API
+        fetch("/resultQuiz/cadastrar", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                acertos: certas,
+                erros: erradas,
+                fk_usuario: sessionStorage.ID_USUARIO
+            }),
+        })
+            .then(function (resposta) {
+                if (resposta.ok) {
+                    console.log("Tentativa registrada com sucesso!");
+                } else {
+                    console.error("Erro ao registrar a tentativa no servidor.");
+                    alert("Não foi possível salvar sua tentativa. Tente novamente.");
+                }
+            })
+            .catch(function (erro) {
+                console.error("Erro na requisição para salvar a tentativa:", erro);
+                alert("Não foi possível salvar sua tentativa. Verifique sua conexão.");
+            });
     }
 </script>
